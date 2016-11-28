@@ -23,14 +23,12 @@
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'formativeassessment';
-$string['pluginname_help'] = 'Create a cloze question type with embedded response fields in the question text to enter a numeric
-or text value or select a value from a number of options.';
+$string['pluginname'] = 'Formative Assessment';
+$string['pluginname_help'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['pluginname_link'] = 'question/type/formativeassessment';
-$string['pluginnameadding'] = 'Adding a formativeassessment question';
-$string['pluginnameediting'] = 'Editing a formativeassessment question';
-$string['pluginnamesummary'] = 'A formativeassessment question type which allows the embedding of the response fields for various available
-sub questions in the question text.
-
-So the student can enter a numeric or short text answer or choose an answer or answer(s) from
- using a select box, check boxes or radio boxes.';
+$string['pluginnameadding'] = 'Adding a formative assessment question';
+$string['pluginnameediting'] = 'Editing a formative assessment question';
+$string['pluginnamesummary'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+$string['responsetemplate'] = 'Response template';
+$string['responsetemplateheader'] = 'Response Template';
+$string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
