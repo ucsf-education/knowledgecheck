@@ -1,0 +1,43 @@
+.que.formassmnt .answer {
+    padding: 0.3em;
+    width: auto;
+    display: inline;
+}
+
+.que.formassmnt .answer textarea {
+    display: block;
+    height: 308px;
+    min-height: 308px;
+    min-width: 98%;
+    width: 98%;
+}
+
+/* Editing form. */
+body#page-question-type-formassmnt div[id^=fgroup_id_][id*=answeroptions_] {
+    display: none;
+}
+
+body#page-question-type-formassmnt div[id^=fgroup_id_][id*=answeroptions_] .fgrouplabel label{
+    display: none;
+}
+
+body#page-question-type-formassmnt div[id^=fgroup_id_][id*=answeroptions_] label[for^='id_answer_']{
+    display: none;
+}
+
+body#page-question-type-formassmnt div[id^=fitem_id_][id*=fraction_] {
+    display: none;
+}
+
+body#page-question-type-formassmnt div[id^=fitem_id_][id*=feedback_] {
+    background: #EEE;
+    margin-bottom: 2em;
+    margin-top: 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid #BBB;
+}
+
+body#page-question-type-formassmnt div[id=fitem_id_addanswers] {
+    display: none;
+}
