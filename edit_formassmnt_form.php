@@ -18,7 +18,7 @@
  * Defines the editing form for the formative assessment question type.
  *
  * @package    qtype
- * @subpackage formativeassessment
+ * @subpackage formassmnt
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -35,16 +35,16 @@ defined('MOODLE_INTERNAL') || die();
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formativeassessment_edit_form extends question_edit_form {
+class qtype_formassmnt_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {
-        $mform->addElement('header', 'responsetemplateheader', get_string('responsetemplateheader', 'qtype_formativeassessment'));
-        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formativeassessment'),
+        $mform->addElement('header', 'responsetemplateheader', get_string('responsetemplateheader', 'qtype_formassmnt'));
+        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formassmnt'),
             array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
-        $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formativeassessment');
+        $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formassmnt');
     }
 
     public function qtype() {
-        return 'formativeassessment';
+        return 'formassmnt';
     }
 }

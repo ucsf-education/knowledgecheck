@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * formativeassessment question definition class.
+ * Formative assessment question definition class.
  *
  * @package    qtype
- * @subpackage formativeassessment
+ * @subpackage formassmnt
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,13 +29,13 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Represents a formativeassessment question.
+ * Represents a formative assessment question.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formativeassessment_question extends question_graded_automatically_with_countback {
+class qtype_formassmnt_question extends question_graded_automatically_with_countback {
 
     public function get_expected_data() {
         // TODO.

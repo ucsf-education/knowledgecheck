@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * formativeassessment question renderer class.
+ * Formative assessment question renderer class.
  *
  * @package    qtype
- * @subpackage formativeassessment
+ * @subpackage formassmnt
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,13 +29,13 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Generates the output for formativeassessment questions.
+ * Generates the output for formative assessment questions.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formativeassessment_renderer extends qtype_renderer {
+class qtype_formassmnt_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa,
             question_display_options $options) {
 

@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Question type class for the formativeassessment question type.
+ * Question type class for the formative assessment question type.
  *
  * @package    qtype
- * @subpackage formativeassessment
+ * @subpackage formassmnt
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,17 +29,17 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/questionlib.php');
 require_once($CFG->dirroot . '/question/engine/lib.php');
-require_once($CFG->dirroot . '/question/type/formativeassessment/question.php');
+require_once($CFG->dirroot . '/question/type/formassmnt/question.php');
 
 
 /**
- * The formativeassessment question type.
+ * The formative assessment question type.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formativeassessment extends question_type {
+class qtype_formassmnt extends question_type {
 
     public function move_files($questionid, $oldcontextid, $newcontextid) {
         parent::move_files($questionid, $oldcontextid, $newcontextid);

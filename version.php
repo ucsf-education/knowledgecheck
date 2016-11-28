@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * formativeassessment question type version information.
+ * Formative assessment question type version information.
  *
  * @package    qtype
- * @subpackage formativeassessment
+ * @subpackage formassmnt
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,7 +26,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qtype_formativeassessment';
+$plugin->component = 'qtype_formassmnt';
 $plugin->version   = 2016112300;
 
 $plugin->requires  = 2014050800;
