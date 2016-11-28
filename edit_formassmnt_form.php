@@ -42,6 +42,8 @@ class qtype_formassmnt_edit_form extends question_edit_form {
         $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formassmnt'),
             array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
         $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formassmnt');
+        $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_formassmnt', '{no}'),
+            array('1.0' => '100%'), 1, 0);
     }
 
     public function qtype() {
