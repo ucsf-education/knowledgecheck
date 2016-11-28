@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the formativeassessment question type.
+ * Defines the editing form for the formative assessment question type.
  *
  * @package    qtype
  * @subpackage formativeassessment
@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * formativeassessment question editing form definition.
+ * Formative assessment question editing form definition.
  *
  * @copyright  2016 The Regents of the University of California
 
@@ -38,14 +38,10 @@ defined('MOODLE_INTERNAL') || die();
 class qtype_formativeassessment_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {
-        $this->add_interactive_settings();
-    }
-
-    protected function data_preprocessing($question) {
-        $question = parent::data_preprocessing($question);
-        $question = $this->data_preprocessing_hints($question);
-
-        return $question;
+        $mform->addElement('header', 'responsetemplateheader', get_string('responsetemplateheader', 'qtype_formativeassessment'));
+        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formativeassessment'),
+            array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
+        $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formativeassessment');
     }
 
     public function qtype() {
