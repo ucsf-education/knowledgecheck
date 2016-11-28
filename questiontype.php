@@ -52,6 +52,17 @@ class qtype_formassmnt extends question_type {
     }
 
     public function save_question_options($question) {
+        global $DB;
+        $options = $DB->get_record('qtype_formassmnt_options', array('questionid' => $question->id));
+        if (!$options) {
+            $options = new stdClass();
+            $options->questionid = $question->id;
+            $options->id = $DB->insert_record('qtype_formassmnt_options', $options);
+        }
+
+        $options->responsetemplate = $question->responsetemplate['text'];
+        $DB->update_record('qtype_formassmnt_options', $options);
+        $this->save_question_answers($question);
         $this->save_hints($question);
     }
 
@@ -68,5 +79,9 @@ class qtype_formassmnt extends question_type {
     public function get_possible_responses($questiondata) {
         // TODO.
         return array();
+    }
+
+    public function extra_question_fields() {
+        return array('qtype_formassmnt_options', 'responsetemplate');
     }
 }
