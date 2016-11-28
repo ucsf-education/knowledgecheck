@@ -23,6 +23,7 @@
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+$string['answerno'] = 'Answer {$a}';
 $string['pluginname'] = 'Formative Assessment';
 $string['pluginname_help'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['pluginname_link'] = 'question/type/formassmnt';
@@ -32,3 +33,4 @@ $string['pluginnamesummary'] = 'Lorem ipsum dolor sit amet, consectetur adipisci
 $string['responsetemplate'] = 'Response template';
 $string['responsetemplateheader'] = 'Response Template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
+
