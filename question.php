@@ -43,6 +43,11 @@ class qtype_formassmnt_question extends question_graded_by_strategy
     public $responsetemplate = null;
 
     /**
+     * @var int
+     */
+    public $responsefieldlines = 15;
+
+    /**
      * @var question_answer[]
      */
     public $answers = array();
@@ -76,7 +81,6 @@ class qtype_formassmnt_question extends question_graded_by_strategy
     }
 
     public function is_same_response(array $prevresponse, array $newresponse) {
-        // TODO.
         return question_utils::arrays_same_at_key_missing_is_blank(
                 $prevresponse, $newresponse, 'answer');
     }
