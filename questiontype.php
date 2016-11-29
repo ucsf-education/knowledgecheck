@@ -67,18 +67,26 @@ class qtype_formassmnt extends question_type {
     }
 
     protected function initialise_question_instance(question_definition $question, $questiondata) {
-        // TODO.
         parent::initialise_question_instance($question, $questiondata);
+        $this->initialise_question_answers($question, $questiondata);
+
     }
 
     public function get_random_guess_score($questiondata) {
-        // TODO.
         return 0;
     }
 
     public function get_possible_responses($questiondata) {
-        // TODO.
-        return array();
+        $responses = array();
+
+        foreach ($questiondata->options->answers as $aid => $answer) {
+            $responses[$aid] = new question_possible_response($answer->answer, $answer->fraction);
+        }
+
+        $responses[0] = new question_possible_response(get_string('didnotmatchanyanswer', 'question'), 0);
+        $responses[null] = question_possible_response::no_response();
+
+        return array($questiondata->id => $responses);
     }
 
     public function extra_question_fields() {
