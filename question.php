@@ -35,8 +35,8 @@ defined('MOODLE_INTERNAL') || die();
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt_question extends question_graded_automatically_with_countback {
-
+class qtype_formassmnt_question extends question_graded_by_strategy
+        implements question_response_answer_comparer {
     /**
      * @var string
      */
@@ -47,24 +47,32 @@ class qtype_formassmnt_question extends question_graded_automatically_with_count
      */
     public $answers = array();
 
+    public function __construct() {
+        parent::__construct(new question_first_matching_answer_grading_strategy($this));
+    }
+
     public function get_expected_data() {
-        // TODO.
-        return array();
+        return array('answer' => PARAM_RAW_TRIMMED);
     }
 
     public function summarise_response(array $response) {
-        // TODO.
-        return null;
+        if (isset($response['answer'])) {
+            return $response['answer'];
+        } else {
+            return null;
+        }
     }
 
     public function is_complete_response(array $response) {
-        // TODO.
-        return true;
+        return array_key_exists('answer', $response) &&
+        ($response['answer'] || $response['answer'] === '0');
     }
 
     public function get_validation_error(array $response) {
-        // TODO.
-        return '';
+        if ($this->is_gradable_response($response)) {
+            return '';
+        }
+        return get_string('pleaseenterananswer', 'qtype_formassmnt');
     }
 
     public function is_same_response(array $prevresponse, array $newresponse) {
@@ -73,33 +81,33 @@ class qtype_formassmnt_question extends question_graded_automatically_with_count
                 $prevresponse, $newresponse, 'answer');
     }
 
-
-    public function get_correct_response() {
-        // TODO.
-        return array();
+    public function get_answers() {
+        return $this->answers;
     }
 
+    public function compare_response_with_answer(array $response, question_answer $answer) {
+        if (!array_key_exists('answer', $response) || is_null($response['answer'])) {
+            return false;
+        }
+
+        // whatever the answer is - it's always correct.
+        return true;
+    }
 
     public function check_file_access($qa, $options, $component, $filearea,
-            $args, $forcedownload) {
-        // TODO.
-        if ($component == 'question' && $filearea == 'hint') {
+        $args, $forcedownload) {
+        if ($component == 'question' && $filearea == 'answerfeedback') {
+            $currentanswer = $qa->get_last_qt_var('answer');
+            $answer = $this->get_matching_answer(array('answer' => $currentanswer));
+            $answerid = reset($args); // Itemid is answer id.
+            return $options->feedback && $answer && $answerid == $answer->id;
+
+        } else if ($component == 'question' && $filearea == 'hint') {
             return $this->check_hint_file_access($qa, $options, $args);
 
         } else {
             return parent::check_file_access($qa, $options, $component, $filearea,
-                    $args, $forcedownload);
+                $args, $forcedownload);
         }
-    }
-
-    public function grade_response(array $response) {
-        // TODO.
-        $fraction = 0;
-        return array($fraction, question_state::graded_state_for_fraction($fraction));
-    }
-
-    public function compute_final_grade($responses, $totaltries) {
-        // TODO.
-        return 0;
     }
 }
