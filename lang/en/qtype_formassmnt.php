@@ -31,6 +31,5 @@ $string['pluginnameadding'] = 'Adding a formative assessment question';
 $string['pluginnameediting'] = 'Editing a formative assessment question';
 $string['pluginnamesummary'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['responsetemplate'] = 'Response template';
-$string['responsetemplateheader'] = 'Response Template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
 

@@ -38,12 +38,27 @@ defined('MOODLE_INTERNAL') || die();
 class qtype_formassmnt_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {
-        $mform->addElement('header', 'responsetemplateheader', get_string('responsetemplateheader', 'qtype_formassmnt'));
         $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formassmnt'),
             array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
         $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formassmnt');
         $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_formassmnt', '{no}'),
             array('1.0' => '100%'), 1, 0);
+    }
+
+    protected function data_preprocessing($question) {
+        $question = parent::data_preprocessing($question);
+        $question = $this->data_preprocessing_answers($question);
+        $question = $this->data_preprocessing_hints($question);
+
+        if (empty($question->options)) {
+            return $question;
+        }
+        $question->responsetemplate = array(
+            'text' => $question->options->responsetemplate,
+            'format' => 1,
+        );
+
+        return $question;
     }
 
     public function qtype() {

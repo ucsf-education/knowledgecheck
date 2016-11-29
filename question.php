@@ -37,6 +37,16 @@ defined('MOODLE_INTERNAL') || die();
  */
 class qtype_formassmnt_question extends question_graded_automatically_with_countback {
 
+    /**
+     * @var string
+     */
+    public $responsetemplate = null;
+
+    /**
+     * @var question_answer[]
+     */
+    public $answers = array();
+
     public function get_expected_data() {
         // TODO.
         return array();
