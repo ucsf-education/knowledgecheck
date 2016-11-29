@@ -24,6 +24,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['answerno'] = 'Answer {$a}';
+$string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['pluginname'] = 'Formative Assessment';
 $string['pluginname_help'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['pluginname_link'] = 'question/type/formassmnt';
