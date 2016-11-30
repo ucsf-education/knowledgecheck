@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the formative assessment question type.
+ * Defines the editing form for the knowledge check question type.
  *
  * @package    qtype
- * @subpackage formassmnt
+ * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,19 +29,19 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Formative assessment question editing form definition.
+ * Knowledge check question editing form definition.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt_edit_form extends question_edit_form {
+class qtype_knowledgecheck_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {
-        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_formassmnt'),
+        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_knowledgecheck'),
             array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
-        $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_formassmnt');
-        $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_formassmnt', '{no}'),
+        $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_knowledgecheck');
+        $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_knowledgecheck', '{no}'),
             array('1.0' => '100%'), 1, 0);
     }
 
@@ -62,6 +62,6 @@ class qtype_formassmnt_edit_form extends question_edit_form {
     }
 
     public function qtype() {
-        return 'formassmnt';
+        return 'knowledgecheck';
     }
 }

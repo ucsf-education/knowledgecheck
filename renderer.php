@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Formative assessment question renderer class.
+ * Knowledge check question renderer class.
  *
  * @package    qtype
- * @subpackage formassmnt
+ * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,19 +29,19 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Generates the output for formative assessment questions.
+ * Generates the output for knowledge check questions.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt_renderer extends qtype_renderer {
+class qtype_knowledgecheck_renderer extends qtype_renderer {
     public function formulation_and_controls(question_attempt $qa,
             question_display_options $options) {
 
         $question = $qa->get_question();
 
-        $responseoutput = $this->page->get_renderer('qtype_formassmnt', 'format_editor');
+        $responseoutput = $this->page->get_renderer('qtype_knowledgecheck', 'format_editor');
 
         // Answer field.
         $step = $qa->get_last_step_with_qt_var('answer');
@@ -93,7 +93,7 @@ class qtype_formassmnt_renderer extends qtype_renderer {
 
 
 /**
- * A format renderer for formative assessments where the student should use the HTML
+ * A format renderer for knowledge checks where the student should use the HTML
  * editor without the file picker.
  *
  * Copied and modified from the Essay question type for our purposes.
@@ -101,14 +101,14 @@ class qtype_formassmnt_renderer extends qtype_renderer {
  * @copyright  2016 The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt_format_editor_renderer extends plugin_renderer_base {
+class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
     protected function class_name() {
-        return 'qtype_formassmnt_editor';
+        return 'qtype_knowledgecheck_editor';
     }
 
     public function response_area_read_only($name, $qa, $step, $lines, $context) {
         return html_writer::tag('div', $this->prepare_response($name, $qa, $step, $context),
-            array('class' => $this->class_name() . ' qtype_formassmnt_editor readonly'));
+            array('class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly'));
     }
 
     public function response_area_input($name, $qa, $step, $lines, $context) {
@@ -134,7 +134,7 @@ class qtype_formassmnt_format_editor_renderer extends plugin_renderer_base {
 
         $output = '';
         $output .= html_writer::start_tag('div', array('class' =>
-            $this->class_name() . ' qtype_formassmnt_response'));
+            $this->class_name() . ' qtype_knowledgecheck_response'));
 
         $output .= html_writer::tag('div', html_writer::tag('textarea', s($response),
             array('id' => $id, 'name' => $inputname, 'rows' => $lines, 'cols' => 60)));

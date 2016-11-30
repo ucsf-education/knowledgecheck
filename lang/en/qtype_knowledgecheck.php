@@ -15,21 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'qtype_formassmnt', language 'en', branch 'MOODLE_20_STABLE'
+ * Strings for component 'qtype_knowledgecheck', language 'en', branch 'MOODLE_20_STABLE'
  *
  * @package    qtype
- * @subpackage formassmnt
+ * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['answerno'] = 'Answer {$a}';
 $string['pleaseenterananswer'] = 'Please enter an answer.';
-$string['pluginname'] = 'Formative Assessment';
+$string['pluginname'] = 'Knowledge Check';
 $string['pluginname_help'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-$string['pluginname_link'] = 'question/type/formassmnt';
-$string['pluginnameadding'] = 'Adding a formative assessment question';
-$string['pluginnameediting'] = 'Editing a formative assessment question';
+$string['pluginname_link'] = 'question/type/knowledgecheck';
+$string['pluginnameadding'] = 'Adding a knowledge check question';
+$string['pluginnameediting'] = 'Editing a knowledge check question';
 $string['pluginnamesummary'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['responsetemplate'] = 'Response template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';

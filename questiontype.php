@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Question type class for the formative assessment question type.
+ * Question type class for the knowledge check question type.
  *
  * @package    qtype
- * @subpackage formassmnt
+ * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,17 +29,17 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/questionlib.php');
 require_once($CFG->dirroot . '/question/engine/lib.php');
-require_once($CFG->dirroot . '/question/type/formassmnt/question.php');
+require_once($CFG->dirroot . '/question/type/knowledgecheck/question.php');
 
 
 /**
- * The formative assessment question type.
+ * The knowledge check question type.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt extends question_type {
+class qtype_knowledgecheck extends question_type {
 
     public function move_files($questionid, $oldcontextid, $newcontextid) {
         parent::move_files($questionid, $oldcontextid, $newcontextid);
@@ -53,15 +53,15 @@ class qtype_formassmnt extends question_type {
 
     public function save_question_options($question) {
         global $DB;
-        $options = $DB->get_record('qtype_formassmnt_options', array('questionid' => $question->id));
+        $options = $DB->get_record('qtype_knowledgecheck_options', array('questionid' => $question->id));
         if (!$options) {
             $options = new stdClass();
             $options->questionid = $question->id;
-            $options->id = $DB->insert_record('qtype_formassmnt_options', $options);
+            $options->id = $DB->insert_record('qtype_knowledgecheck_options', $options);
         }
 
         $options->responsetemplate = $question->responsetemplate['text'];
-        $DB->update_record('qtype_formassmnt_options', $options);
+        $DB->update_record('qtype_knowledgecheck_options', $options);
         $this->save_question_answers($question);
         $this->save_hints($question);
     }
@@ -90,6 +90,6 @@ class qtype_formassmnt extends question_type {
     }
 
     public function extra_question_fields() {
-        return array('qtype_formassmnt_options', 'responsetemplate');
+        return array('qtype_knowledgecheck_options', 'responsetemplate');
     }
 }

@@ -18,7 +18,7 @@
  * Serve question type files
  *
  * @since      2.0
- * @package    qtype_formassmnt
+ * @package    qtype_knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,8 +29,8 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Checks file access for formative assessment questions.
- * @package  qtype_formassmnt
+ * Checks file access for knowledge check questions.
+ * @package  qtype_knowledgecheck
  * @category files
  * @param stdClass $course course object
  * @param stdClass $cm course module object
@@ -41,8 +41,8 @@ defined('MOODLE_INTERNAL') || die();
  * @param array $options additional options affecting the file serving
  * @return bool
  */
-function qtype_formassmnt_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function qtype_knowledgecheck_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
     global $DB, $CFG;
     require_once($CFG->libdir . '/questionlib.php');
-    question_pluginfile($course, $context, 'qtype_formassmnt', $filearea, $args, $forcedownload, $options);
+    question_pluginfile($course, $context, 'qtype_knowledgecheck', $filearea, $args, $forcedownload, $options);
 }

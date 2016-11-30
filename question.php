@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Formative assessment question definition class.
+ * Knowledge check question definition class.
  *
  * @package    qtype
- * @subpackage formassmnt
+ * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -29,13 +29,13 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Represents a formative assessment question.
+ * Represents a knowledge check question.
  *
  * @copyright  2016 The Regents of the University of California
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_formassmnt_question extends question_graded_by_strategy
+class qtype_knowledgecheck_question extends question_graded_by_strategy
         implements question_response_answer_comparer {
     /**
      * @var string
@@ -74,7 +74,7 @@ class qtype_formassmnt_question extends question_graded_by_strategy
     }
 
     public function get_validation_error(array $response) {
-        return get_string('pleaseenterananswer', 'qtype_formassmnt');
+        return get_string('pleaseenterananswer', 'qtype_knowledgecheck');
     }
 
     public function is_same_response(array $prevresponse, array $newresponse) {

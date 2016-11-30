@@ -1,4 +1,4 @@
-# Formative Assessment Question Type
+# Knowledge Check Question Type
 
 A custom question type for Moodle.
 
