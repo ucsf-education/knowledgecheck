@@ -74,9 +74,6 @@ class qtype_formassmnt_question extends question_graded_by_strategy
     }
 
     public function get_validation_error(array $response) {
-        if ($this->is_gradable_response($response)) {
-            return '';
-        }
         return get_string('pleaseenterananswer', 'qtype_formassmnt');
     }
 
