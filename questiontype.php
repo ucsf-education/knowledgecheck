@@ -92,4 +92,8 @@ class qtype_knowledgecheck extends question_type {
     public function extra_question_fields() {
         return array('qtype_knowledgecheck_options', 'responsetemplate');
     }
+
+    public function is_real_question_type() {
+        return false;
+    }
 }
