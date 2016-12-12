@@ -28,11 +28,11 @@ $string['addlinfotext']  = 'Lorem ipsum dolor sit amet, consectetur adipiscing e
 $string['answerno'] = 'Answer {$a}';
 $string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['pluginname'] = 'Knowledge Check';
-$string['pluginname_help'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+$string['pluginname_help'] = 'Students can check their knowledge and get immediate or delayed feedback (depending on the question settings).';
 $string['pluginname_link'] = 'question/type/knowledgecheck';
 $string['pluginnameadding'] = 'Adding a knowledge check question';
 $string['pluginnameediting'] = 'Editing a knowledge check question';
-$string['pluginnamesummary'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+$string['pluginnamesummary'] = 'Students can check their knowledge and get immediate or delayed feedback (depending on the question settings). All answers are automatically graded and assumed to be correct. The main purpose of this question type is to automatically provide students with feedback on their responses.';
 $string['responsetemplate'] = 'Response template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
 
