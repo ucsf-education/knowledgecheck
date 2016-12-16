@@ -41,10 +41,6 @@ class qtype_knowledgecheck_edit_form extends question_edit_form {
         $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_knowledgecheck'),
             array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
         $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_knowledgecheck');
-        $mform->addElement('static', 'addlinfo',
-            get_string('addlinfolabel', 'qtype_knowledgecheck'),
-            get_string('addlinfotext', 'qtype_knowledgecheck'));
-        $mform->closeHeaderBefore('addlinfo');
         $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_knowledgecheck', '{no}'),
             array('1.0' => '100%'), 1, 0);
     }

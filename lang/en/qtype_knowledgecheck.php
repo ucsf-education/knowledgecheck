@@ -23,8 +23,6 @@
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['addlinfolabel'] = 'Additional Info';
-$string['addlinfotext']  = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 $string['answerno'] = 'Answer {$a}';
 $string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['pluginname'] = 'Knowledge Check';
