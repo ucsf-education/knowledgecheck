@@ -27,7 +27,6 @@ $string['answerno'] = 'Answer {$a}';
 $string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['pluginname'] = 'Knowledge Check';
 $string['pluginname_help'] = 'Students can check their knowledge and get immediate or delayed feedback (depending on the question settings).';
-$string['pluginname_link'] = 'question/type/knowledgecheck';
 $string['pluginnameadding'] = 'Adding a knowledge check question';
 $string['pluginnameediting'] = 'Editing a knowledge check question';
 $string['pluginnamesummary'] = 'Students can check their knowledge and get immediate or delayed feedback (depending on the question settings). All answers are automatically graded and assumed to be correct. The main purpose of this question type is to automatically provide students with feedback on their responses.';
