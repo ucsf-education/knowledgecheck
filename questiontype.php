@@ -38,16 +38,36 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/question.php');
  */
 class qtype_knowledgecheck extends question_type {
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param int $questionid the question being moved.
+     * @param int $oldcontextid the context it is moving from.
+     * @param int $newcontextid the context it is moving to.
+     */
     public function move_files($questionid, $oldcontextid, $newcontextid) {
         parent::move_files($questionid, $oldcontextid, $newcontextid);
         $this->move_files_in_hints($questionid, $oldcontextid, $newcontextid);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param int $questionid the question being deleted.
+     * @param int $contextid the context the question is in.
+     */
     protected function delete_files($questionid, $contextid) {
         parent::delete_files($questionid, $contextid);
         $this->delete_files_in_hints($questionid, $contextid);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param object $question  This holds the information from the editing form,
+     *      it is not a standard question object.
+     * @return object $result->error or $result->notice
+     */
     public function save_question_options($question) {
         global $DB;
         $options = $DB->get_record('qtype_knowledgecheck_options', ['questionid' => $question->id]);
@@ -63,16 +83,37 @@ class qtype_knowledgecheck extends question_type {
         $this->save_hints($question);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param question_definition $question the question_definition we are creating.
+     * @param object $questiondata the question data loaded from the database.
+     */
     protected function initialise_question_instance(question_definition $question, $questiondata) {
         parent::initialise_question_instance($question, $questiondata);
         $this->initialise_question_answers($question, $questiondata);
 
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param stdClass $questiondata data defining a question, as returned by
+     *      question_bank::load_question_data().
+     * @return number|null either a fraction estimating what the student would
+     *      score by guessing, or null, if it is not possible to estimate.
+     */
     public function get_random_guess_score($questiondata) {
         return 0;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param object $questiondata the question definition data.
+     * @return array keys are subquestionid, values are arrays of possible
+     *      responses to that subquestion.
+     */
     public function get_possible_responses($questiondata) {
         $responses = [];
 
@@ -86,10 +127,22 @@ class qtype_knowledgecheck extends question_type {
         return [$questiondata->id => $responses];
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed array as above, or null to tell the base class to do nothing.
+     */
     public function extra_question_fields() {
         return ['qtype_knowledgecheck_options', 'responsetemplate'];
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return bool override this to return false if this is not really a
+     *      question type, for example the description question type is not
+     *      really a question type.
+     */
     public function is_real_question_type() {
         return false;
     }

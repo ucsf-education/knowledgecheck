@@ -32,6 +32,14 @@ defined('MOODLE_INTERNAL') || die();
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_knowledgecheck_renderer extends qtype_renderer {
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param question_attempt $qa the question attempt to display.
+     * @param question_display_options $options controls what should and should not be displayed.
+     * @return string HTML fragment.
+     */
     public function formulation_and_controls(question_attempt $qa,
             question_display_options $options) {
 
@@ -73,6 +81,12 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
         return $result;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param question_attempt $qa the question attempt to display.
+     * @return string HTML fragment.
+     */
     public function specific_feedback(question_attempt $qa) {
         $question = $qa->get_question();
 
@@ -86,26 +100,51 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
     }
 }
 
-
 /**
- * A format renderer for knowledge checks where the student should use the HTML
- * editor without the file picker.
+ * A format renderer for knowledge checks where the student should use the HTML editor without the file picker.
  *
  * Copied and modified from the Essay question type for our purposes.
  *
+ * @package    qtype_knowledgecheck
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
+
+    /**
+     * Gets a specific class name to add to the input element.
+     *
+     * @return string specific class name to add to the input element.
+     */
     protected function class_name() {
         return 'qtype_knowledgecheck_editor';
     }
 
+    /**
+     * Render the student's response when the question is in read-only mode.
+     *
+     * @param string $name the variable name this input edits.
+     * @param question_attempt $qa the question attempt being display.
+     * @param question_attempt_step $step the current step.
+     * @param int $lines approximate size of input box to display.
+     * @param object $context the context teh output belongs to.
+     * @return string html to display the response.
+     */
     public function response_area_read_only($name, $qa, $step, $lines, $context) {
         return html_writer::tag('div', $this->prepare_response($name, $qa, $step, $context),
             ['class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly']);
     }
 
+    /**
+     * Render the student's response when the question is in read-only mode.
+     *
+     * @param string $name the variable name this input edits.
+     * @param question_attempt $qa the question attempt being display.
+     * @param question_attempt_step $step the current step.
+     * @param int $lines approximate size of input box to display.
+     * @param object $context the context teh output belongs to.
+     * @return string html to display the response for editing.
+     */
     public function response_area_input($name, $qa, $step, $lines, $context) {
         global $CFG;
         require_once($CFG->dirroot . '/repository/lib.php');
@@ -155,6 +194,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
 
     /**
      * Prepare the response for read-only display.
+     *
      * @param string $name the variable name this input edits.
      * @param question_attempt $qa the question attempt being display.
      * @param question_attempt_step $step the current step.
@@ -175,6 +215,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
 
     /**
      * Prepare the response for editing.
+     *
      * @param string $name the variable name this input edits.
      * @param question_attempt_step $step the current step.
      * @param object $context the context the attempt belongs to.
@@ -186,6 +227,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
     }
 
     /**
+     * Get editor options for question response text area.
+     *
      * @param object $context the context the attempt belongs to.
      * @return array options for the editor.
      */
@@ -194,6 +237,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
     }
 
     /**
+     * Get filepicker options for the editor.
+     *
      * @param object $context the context the attempt belongs to.
      * @param int $draftitemid draft item id.
      * @return array filepicker options for the editor.
@@ -203,6 +248,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
     }
 
     /**
+     * Get HTML for the filepicker, if used.
+     *
      * @param string $inputname input field name.
      * @param int $draftitemid draft file area itemid.
      * @return string HTML for the filepicker, if used.

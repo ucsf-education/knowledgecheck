@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Restore plugin for the Knowledge check question type.
+ *
  * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
  * @copyright  (c) The Regents of the University of California
@@ -51,6 +53,7 @@ class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin {
 
     /**
      * Process the qtype/knowledgecheck element
+     * @param array $data The data to restore.
      */
     public function process_knowledgecheck($data) {
         global $DB;

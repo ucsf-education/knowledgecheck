@@ -31,6 +31,11 @@
  */
 class qtype_knowledgecheck_edit_form extends question_edit_form {
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param object $mform The form being built.
+     */
     protected function definition_inner($mform) {
         $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_knowledgecheck'),
             ['rows' => 10],  array_merge($this->editoroptions, ['maxfiles' => 0]));
@@ -39,6 +44,12 @@ class qtype_knowledgecheck_edit_form extends question_edit_form {
             ['1.0' => '100%'], 1, 0);
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @param object $question The data being passed to the form.
+     * @return object $question The modified data.
+     */
     protected function data_preprocessing($question) {
         $question = parent::data_preprocessing($question);
         $question = $this->data_preprocessing_answers($question);
@@ -55,6 +66,11 @@ class qtype_knowledgecheck_edit_form extends question_edit_form {
         return $question;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @return string The question type name.
+     */
     public function qtype() {
         return 'knowledgecheck';
     }

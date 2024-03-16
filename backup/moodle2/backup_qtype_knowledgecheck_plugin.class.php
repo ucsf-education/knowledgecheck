@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Backup plugin for the Knowledge check question type.
+ *
  * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
  * @copyright  (c) The Regents of the University of California
@@ -22,7 +24,7 @@
  */
 
 /**
- * Provides the information to backup knowledge check questions.
+ * Provides the information to backup knowledgecheck questions.
  *
  * @package    qtype_knowledgecheck
  * @copyright  (c) The Regents of the University of California
