@@ -17,7 +17,7 @@
 /**
  * Knowledge check question type version information.
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 

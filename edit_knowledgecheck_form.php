@@ -17,7 +17,7 @@
 /**
  * Defines the editing form for the knowledge check question type.
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
@@ -39,10 +39,10 @@ class qtype_knowledgecheck_edit_form extends question_edit_form {
 
     protected function definition_inner($mform) {
         $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_knowledgecheck'),
-            array('rows' => 10),  array_merge($this->editoroptions, array('maxfiles' => 0)));
+            ['rows' => 10],  array_merge($this->editoroptions, ['maxfiles' => 0]));
         $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_knowledgecheck');
         $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_knowledgecheck', '{no}'),
-            array('1.0' => '100%'), 1, 0);
+            ['1.0' => '100%'], 1, 0);
     }
 
     protected function data_preprocessing($question) {
@@ -53,10 +53,10 @@ class qtype_knowledgecheck_edit_form extends question_edit_form {
         if (empty($question->options)) {
             return $question;
         }
-        $question->responsetemplate = array(
+        $question->responsetemplate = [
             'text' => $question->options->responsetemplate,
             'format' => 1,
-        );
+        ];
 
         return $question;
     }

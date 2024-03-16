@@ -17,7 +17,7 @@
 /**
  * Question type class for the knowledge check question type.
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
@@ -53,7 +53,7 @@ class qtype_knowledgecheck extends question_type {
 
     public function save_question_options($question) {
         global $DB;
-        $options = $DB->get_record('qtype_knowledgecheck_options', array('questionid' => $question->id));
+        $options = $DB->get_record('qtype_knowledgecheck_options', ['questionid' => $question->id]);
         if (!$options) {
             $options = new stdClass();
             $options->questionid = $question->id;
@@ -77,7 +77,7 @@ class qtype_knowledgecheck extends question_type {
     }
 
     public function get_possible_responses($questiondata) {
-        $responses = array();
+        $responses = [];
 
         foreach ($questiondata->options->answers as $aid => $answer) {
             $responses[$aid] = new question_possible_response($answer->answer, $answer->fraction);
@@ -86,11 +86,11 @@ class qtype_knowledgecheck extends question_type {
         $responses[0] = new question_possible_response(get_string('didnotmatchanyanswer', 'question'), 0);
         $responses[null] = question_possible_response::no_response();
 
-        return array($questiondata->id => $responses);
+        return [$questiondata->id => $responses];
     }
 
     public function extra_question_fields() {
-        return array('qtype_knowledgecheck_options', 'responsetemplate');
+        return ['qtype_knowledgecheck_options', 'responsetemplate'];
     }
 
     public function is_real_question_type() {

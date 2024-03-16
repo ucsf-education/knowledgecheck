@@ -17,7 +17,7 @@
 /**
  * Strings for component 'qtype_knowledgecheck', language 'en', branch 'MOODLE_20_STABLE'
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 

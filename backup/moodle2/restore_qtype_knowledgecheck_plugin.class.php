@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    knowledgecheck
+ * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
  * @copyright  2016 The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -39,7 +39,7 @@ class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin {
      */
     protected function define_question_plugin_structure() {
 
-        $paths = array();
+        $paths = [];
 
         // This qtype uses question_answers, add them.
         $this->add_question_question_answers($paths);
@@ -79,7 +79,7 @@ class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin {
 
             // It is possible for old backup files to contain unique key violations.
             // We need to check to avoid that.
-            if (!$DB->record_exists('qtype_knowledgecheck_options', array('questionid' => $data->questionid))) {
+            if (!$DB->record_exists('qtype_knowledgecheck_options', ['questionid' => $data->questionid])) {
                 $newitemid = $DB->insert_record('qtype_knowledgecheck_options', $data);
                 $this->set_mapping('qtype_knowledgecheck_options', $oldid, $newitemid);
             }

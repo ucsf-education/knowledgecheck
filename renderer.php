@@ -17,7 +17,7 @@
 /**
  * Knowledge check question renderer class.
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
@@ -46,10 +46,9 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
         // Answer field.
         $step = $qa->get_last_step_with_qt_var('answer');
 
-
         if (!$step->has_qt_var('answer') && empty($options->readonly)) {
             // Question has never been answered, fill it with response template.
-            $step = new question_attempt_step(array('answer'=>$question->responsetemplate));
+            $step = new question_attempt_step(['answer' => $question->responsetemplate]);
         }
 
         if (empty($options->readonly)) {
@@ -63,16 +62,16 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
 
         $result = '';
         $result .= html_writer::tag('div', $question->format_questiontext($qa),
-            array('class' => 'qtext'));
+            ['class' => 'qtext']);
 
-        $result .= html_writer::start_tag('div', array('class' => 'ablock'));
-        $result .= html_writer::tag('div', $answer, array('class' => 'answer'));
+        $result .= html_writer::start_tag('div', ['class' => 'ablock']);
+        $result .= html_writer::tag('div', $answer, ['class' => 'answer']);
         $result .= html_writer::end_tag('div');
 
         if ($qa->get_state() == question_state::$invalid) {
             $result .= html_writer::nonempty_tag('div',
-                $question->get_validation_error(array('answer' => $answer)),
-                array('class' => 'validationerror'));
+                $question->get_validation_error(['answer' => $answer]),
+                ['class' => 'validationerror']);
         }
 
         return $result;
@@ -81,7 +80,7 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
     public function specific_feedback(question_attempt $qa) {
         $question = $qa->get_question();
 
-        $answer = $question->get_matching_answer(array('answer' => $qa->get_last_qt_var('answer')));
+        $answer = $question->get_matching_answer(['answer' => $qa->get_last_qt_var('answer')]);
         if (!$answer || !$answer->feedback) {
             return '';
         }
@@ -108,7 +107,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
 
     public function response_area_read_only($name, $qa, $step, $lines, $context) {
         return html_writer::tag('div', $this->prepare_response($name, $qa, $step, $context),
-            array('class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly'));
+            ['class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly']);
     }
 
     public function response_area_input($name, $qa, $step, $lines, $context) {
@@ -133,17 +132,17 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
             $this->get_filepicker_options($context, $draftitemid));
 
         $output = '';
-        $output .= html_writer::start_tag('div', array('class' =>
-            $this->class_name() . ' qtype_knowledgecheck_response'));
+        $output .= html_writer::start_tag('div', ['class' =>
+            $this->class_name() . ' qtype_knowledgecheck_response']);
 
         $output .= html_writer::tag('div', html_writer::tag('textarea', s($response),
-            array('id' => $id, 'name' => $inputname, 'rows' => $lines, 'cols' => 60)));
+            ['id' => $id, 'name' => $inputname, 'rows' => $lines, 'cols' => 60]));
 
         $output .= html_writer::start_tag('div');
         if (count($formats) == 1) {
             reset($formats);
-            $output .= html_writer::empty_tag('input', array('type' => 'hidden',
-                'name' => $inputname . 'format', 'value' => key($formats)));
+            $output .= html_writer::empty_tag('input', ['type' => 'hidden',
+                'name' => $inputname . 'format', 'value' => key($formats)]);
 
         } else {
             $output .= html_writer::label(get_string('format'), 'menu' . $inputname . 'format', false);
@@ -187,7 +186,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      */
     protected function prepare_response_for_editing($name,
         question_attempt_step $step, $context) {
-        return array(0, $step->get_qt_var($name));
+        return [0, $step->get_qt_var($name)];
     }
 
     /**
@@ -195,7 +194,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @return array options for the editor.
      */
     protected function get_editor_options($context) {
-        return array('context' => $context);
+        return ['context' => $context];
     }
 
     /**
@@ -204,7 +203,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @return array filepicker options for the editor.
      */
     protected function get_filepicker_options($context, $draftitemid) {
-        return array('return_types'  => FILE_INTERNAL | FILE_EXTERNAL);
+        return ['return_types'  => FILE_INTERNAL | FILE_EXTERNAL];
     }
 
     /**

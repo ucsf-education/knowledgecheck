@@ -17,7 +17,7 @@
 /**
  * Knowledge check question definition class.
  *
- * @package    qtype
+ * @package    qtype_knowledgecheck
  * @subpackage knowledgecheck
  * @copyright  2016 The Regents of the University of California
 
@@ -50,14 +50,14 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy
     /**
      * @var question_answer[]
      */
-    public $answers = array();
+    public $answers = [];
 
     public function __construct() {
         parent::__construct(new question_first_matching_answer_grading_strategy($this));
     }
 
     public function get_expected_data() {
-        return array('answer' => PARAM_RAW_TRIMMED);
+        return ['answer' => PARAM_RAW_TRIMMED];
     }
 
     public function summarise_response(array $response) {
@@ -99,7 +99,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy
         $args, $forcedownload) {
         if ($component == 'question' && $filearea == 'answerfeedback') {
             $currentanswer = $qa->get_last_qt_var('answer');
-            $answer = $this->get_matching_answer(array('answer' => $currentanswer));
+            $answer = $this->get_matching_answer(['answer' => $currentanswer]);
             $answerid = reset($args); // Itemid is answer id.
             return $options->feedback && $answer && $answerid == $answer->id;
 
