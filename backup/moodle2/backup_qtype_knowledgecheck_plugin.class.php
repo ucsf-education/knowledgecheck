@@ -15,20 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    knowledgecheck
+ * Backup plugin for the Knowledge check question type.
+ *
+ * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
- * @copyright  2016 The Regents of the University of California
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
-defined('MOODLE_INTERNAL') || die();
-
-
 /**
- * Provides the information to backup knowledge check questions.
+ * Provides the information to backup knowledgecheck questions.
  *
- * @copyright  2016 The Regents of the University of California
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin {
@@ -52,14 +51,14 @@ class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin {
         $this->add_question_question_answers($pluginwrapper);
 
         // Now create the qtype own structures.
-        $knowledgecheck = new backup_nested_element('knowledgecheck', array('id'), array('responsetemplate'));
+        $knowledgecheck = new backup_nested_element('knowledgecheck', ['id'], ['responsetemplate']);
 
         // Now the own qtype tree.
         $pluginwrapper->add_child($knowledgecheck);
 
         // Set source to populate the data.
         $knowledgecheck->set_source_table('qtype_knowledgecheck_options',
-            array('questionid' => backup::VAR_PARENTID));
+            ['questionid' => backup::VAR_PARENTID]);
 
         // Don't need to annotate ids nor files.
 

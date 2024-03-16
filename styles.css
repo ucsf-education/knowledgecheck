@@ -17,11 +17,11 @@ body#page-question-type-knowledgecheck div[id^=fgroup_id_][id*=answeroptions_] {
     display: none;
 }
 
-body#page-question-type-knowledgecheck div[id^=fgroup_id_][id*=answeroptions_] .fgrouplabel label{
+body#page-question-type-knowledgecheck div[id^=fgroup_id_][id*=answeroptions_] .fgrouplabel label {
     display: none;
 }
 
-body#page-question-type-knowledgecheck div[id^=fgroup_id_][id*=answeroptions_] label[for^='id_answer_']{
+body#page-question-type-knowledgecheck div[id^=fgroup_id_][id*=answeroptions_] label[for^='id_answer_'] {
     display: none;
 }
 
@@ -30,12 +30,12 @@ body#page-question-type-knowledgecheck div[id^=fitem_id_][id*=fraction_] {
 }
 
 body#page-question-type-knowledgecheck div[id^=fitem_id_][id*=feedback_] {
-    background: #EEE;
+    background: #eee;
     margin-bottom: 2em;
     margin-top: 0;
     padding-bottom: 5px;
     padding-top: 5px;
-    border: 1px solid #BBB;
+    border: 1px solid #bbb;
 }
 
 body#page-question-type-knowledgecheck div[id=fitem_id_addanswers] {

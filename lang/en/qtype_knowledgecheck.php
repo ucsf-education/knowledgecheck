@@ -15,12 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'qtype_knowledgecheck', language 'en', branch 'MOODLE_20_STABLE'
+ * Strings for component 'qtype_knowledgecheck'.
  *
- * @package    qtype
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['answerno'] = 'Answer {$a}';
@@ -30,6 +28,8 @@ $string['pluginname_help'] = 'Students can check their knowledge and get immedia
 $string['pluginnameadding'] = 'Adding a knowledge check question';
 $string['pluginnameediting'] = 'Editing a knowledge check question';
 $string['pluginnamesummary'] = 'Students can check their knowledge and get immediate or delayed feedback (depending on the question settings). All answers are automatically graded and assumed to be correct. The main purpose of this question type is to automatically provide students with feedback on their responses.';
+$string['privacy:metadata'] = 'Knowledgecheck question type plugin allows question authors to set default options as user preferences.';
+$string['privacy:preference:defaultmark'] = 'The default mark set for a given question.';
 $string['responsetemplate'] = 'Response template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
 
