@@ -87,7 +87,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy
             return false;
         }
 
-        // whatever the answer is - it's always correct.
+        // Whatever the answer is - it's always correct.
         return true;
     }
 
