@@ -98,18 +98,6 @@ class qtype_knowledgecheck extends question_type {
     /**
      * {@inheritdoc}
      *
-     * @param stdClass $questiondata data defining a question, as returned by
-     *      question_bank::load_question_data().
-     * @return number|null either a fraction estimating what the student would
-     *      score by guessing, or null, if it is not possible to estimate.
-     */
-    public function get_random_guess_score($questiondata) {
-        return 0;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @param object $questiondata the question definition data.
      * @return array keys are subquestionid, values are arrays of possible
      *      responses to that subquestion.
