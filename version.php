@@ -25,6 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qtype_knowledgecheck';
-$plugin->version   = 2022121200;
-$plugin->requires  = 2022111800;
+$plugin->version   = 2024031600;
+$plugin->release = 'v4.1';
+$plugin->requires = 2022112800;
+$plugin->supported = [401, 401];
 $plugin->maturity  = MATURITY_STABLE;
