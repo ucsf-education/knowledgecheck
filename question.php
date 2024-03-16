@@ -18,17 +18,15 @@
  * Knowledge check question definition class.
  *
  * @package    qtype_knowledgecheck
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Represents a knowledge check question.
  *
- * @copyright  2016 The Regents of the University of California
-
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_knowledgecheck_question extends question_graded_by_strategy

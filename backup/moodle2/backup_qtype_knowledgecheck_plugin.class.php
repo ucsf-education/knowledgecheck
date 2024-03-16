@@ -17,14 +17,15 @@
 /**
  * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
- * @copyright  2016 The Regents of the University of California
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Provides the information to backup knowledge check questions.
  *
- * @copyright  2016 The Regents of the University of California
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin {

@@ -15,12 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'qtype_knowledgecheck', language 'en', branch 'MOODLE_20_STABLE'
+ * Strings for component 'qtype_knowledgecheck'.
  *
  * @package    qtype_knowledgecheck
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['answerno'] = 'Answer {$a}';

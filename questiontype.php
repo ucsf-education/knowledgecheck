@@ -18,12 +18,9 @@
  * Question type class for the knowledge check question type.
  *
  * @package    qtype_knowledgecheck
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -35,8 +32,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/question.php');
 /**
  * The knowledge check question type.
  *
- * @copyright  2016 The Regents of the University of California
-
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_knowledgecheck extends question_type {

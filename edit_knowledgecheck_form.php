@@ -18,17 +18,15 @@
  * Defines the editing form for the knowledge check question type.
  *
  * @package    qtype_knowledgecheck
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Knowledge check question editing form definition.
  *
- * @copyright  2016 The Regents of the University of California
-
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_knowledgecheck_edit_form extends question_edit_form {

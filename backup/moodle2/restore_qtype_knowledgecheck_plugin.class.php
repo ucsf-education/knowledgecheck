@@ -17,15 +17,15 @@
 /**
  * @package    qtype_knowledgecheck
  * @subpackage backup-moodle2
- * @copyright  2016 The Regents of the University of California
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * restore plugin class that provides the necessary information
- * needed to restore one knowledgecheck qtype plugin
+ * Restore plugin class that provides the necessary information needed to restore one knowledgecheck qtype plugin.
  *
- * @copyright  2016 The Regents of the University of California
+ * @package    qtype_knowledgecheck
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin {

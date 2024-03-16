@@ -18,9 +18,7 @@
  * Knowledge check question type version information.
  *
  * @package    qtype_knowledgecheck
- * @subpackage knowledgecheck
- * @copyright  2016 The Regents of the University of California
-
+ * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
