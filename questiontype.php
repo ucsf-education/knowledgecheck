@@ -77,7 +77,14 @@ class qtype_knowledgecheck extends question_type {
             $options->id = $DB->insert_record('qtype_knowledgecheck_options', $options);
         }
 
-        $options->responsetemplate = $question->responsetemplate['text'];
+        if (is_string($question->responsetemplate)) {
+            // Band-aid solution for question-bank import/export misalignment.
+            // @link https://github.com/ucsf-education/knowledgecheck/issues/18.
+            // TODO: correct the misalignment on the export-side of things [ST 2025/04/04].
+            $options->responsetemplate = $question->responsetemplate;
+        } else {
+            $options->responsetemplate = $question->responsetemplate['text'];
+        }
         $DB->update_record('qtype_knowledgecheck_options', $options);
         $this->save_question_answers($question);
         $this->save_hints($question);
