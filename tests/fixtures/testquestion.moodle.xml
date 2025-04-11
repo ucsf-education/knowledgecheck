@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+    <!-- question: 0  -->
+    <question type="category">
+        <category>
+            <text>$course$/Test questions</text>
+
+        </category>
+    </question>
+    <question type="knowledgecheck">
+        <name>
+            <text>knowledgecheck-001</text>
+        </name>
+        <questiontext format="html">
+            <text>Describe what you see outside your window.</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text>Thanks for answering this question.</text>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <responsetemplate>I see X, Y, and Z.</responsetemplate>
+        <answer fraction="100" format="moodle_auto_format">
+            <text/>
+            <feedback format="html">
+                <text>Any answer is fine.</text>
+            </feedback>
+        </answer>
+    </question>
+</quiz>
