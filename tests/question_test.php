@@ -45,8 +45,7 @@ final class question_test extends advanced_testcase
     /**
      * {@inheritDoc}
      */
-    protected function setUp(): void
-    {
+    protected function setUp(): void {
         parent::setUp();
         $this->question = new qtype_knowledgecheck_question();
     }
@@ -54,8 +53,7 @@ final class question_test extends advanced_testcase
     /**
      * {@inheritDoc}
      */
-    protected function tearDown(): void
-    {
+    protected function tearDown(): void {
         parent::tearDown();
         unset($this->question);
     }
@@ -63,8 +61,7 @@ final class question_test extends advanced_testcase
     /**
      * Checks the expected data structure to be returned in response to this question.
      */
-    public function test_get_expected_data(): void
-    {
+    public function test_get_expected_data(): void {
         $this->assertEquals(
             ['answer' => PARAM_RAW_TRIMMED],
             $this->question->get_expected_data()
@@ -78,8 +75,7 @@ final class question_test extends advanced_testcase
      * @param array $response The response test fixture.
      * @param mixed $expected The expected output of the method under test.
      */
-    public function test_summarize_response(array $response, mixed $expected): void
-    {
+    public function test_summarize_response(array $response, mixed $expected): void {
         $this->assertEquals($expected, $this->question->summarise_response($response));
     }
 
@@ -87,8 +83,7 @@ final class question_test extends advanced_testcase
      * Data provider for {@see test_summarize_response()}.
      * @return array An array of arrays, containing response test fixtures and expected summaries.
      */
-    public static function summarize_response_provider(): array
-    {
+    public static function summarize_response_provider(): array {
         return [
             [['answer' => 'lorem ipsum'], 'lorem ipsum'],
             [['answer' => ''], ''],
@@ -104,8 +99,7 @@ final class question_test extends advanced_testcase
      * @param array $response The response test fixture.
      * @param bool $expected TRUE if the given response is expected to be complete, FALSE otherwise.
      */
-    public function test_is_complete_response(array $response, bool $expected): void
-    {
+    public function test_is_complete_response(array $response, bool $expected): void {
         $this->assertEquals($expected, $this->question->is_complete_response($response));
     }
 
@@ -113,8 +107,7 @@ final class question_test extends advanced_testcase
      * Data provider for {@see test_is_complete_response()}.
      * @return array An array of arrays, containing response test fixtures and expected completion status.
      */
-    public static function summarize_is_complete_response_provider(): array
-    {
+    public static function summarize_is_complete_response_provider(): array {
         return [
             [['answer' => 'lorem ipsum'], true],
             [['answer' => '0'], true],
@@ -131,8 +124,7 @@ final class question_test extends advanced_testcase
      * @dataProvider get_validation_error_provider
      * @param array $response The response test fixture.
      */
-    public function test_get_validation_error(array $response): void
-    {
+    public function test_get_validation_error(array $response): void {
         // Regardless of what the given response is, the validation error is emitted is always the same.
         // This is OK, b/c in order for this method to be invoked,
         // the question state has already been determined to be invalid.
@@ -144,8 +136,7 @@ final class question_test extends advanced_testcase
      * Data provider for {@see test_get_validation_error()}.
      * @return array An array of arrays, containing response test fixtures.
      */
-    public static function get_validation_error_provider(): array
-    {
+    public static function get_validation_error_provider(): array {
         return [
             [['answer' => 'lorem ipsum']],
             [['answer' => '0']],
@@ -164,8 +155,7 @@ final class question_test extends advanced_testcase
      * @param bool $expected TRUE if both responses are expected to contain the same answer, FALSE othewise.
      * @return void
      */
-    public function test_is_same_response(array $prevresponse, array $newresponse, bool $expected): void
-    {
+    public function test_is_same_response(array $prevresponse, array $newresponse, bool $expected): void {
         $this->assertEquals($expected, $this->question->is_same_response($prevresponse, $newresponse));
     }
 
@@ -173,8 +163,7 @@ final class question_test extends advanced_testcase
      * Data provider for {@see test_is_same_response()}.
      * @return array An array of arrays, containing response test fixtures and expected comparison value.
      */
-    public static function is_same_response_provider(): array
-    {
+    public static function is_same_response_provider(): array {
         return [
             [[], [], true],
             [['answer' => ''], ['answer' => ''], true],
@@ -190,8 +179,7 @@ final class question_test extends advanced_testcase
     /**
      * Tests the answers getter on this question.
      */
-    public function test_get_answers(): void
-    {
+    public function test_get_answers(): void {
         $this->assertEquals([], $this->question->get_answers());
         $answers = ['whatever', 'is', 'fine', 'here'];
         $this->question->answers = $answers;
@@ -207,8 +195,7 @@ final class question_test extends advanced_testcase
      * @param bool $expected TRUE if the given response "matches" the given answer, FALSE otherwise.
      * @return void
      */
-    public function test_compare_response_with_answer(array $response, question_answer $answer, $expected): void
-    {
+    public function test_compare_response_with_answer(array $response, question_answer $answer, $expected): void {
         $this->assertEquals($expected, $this->question->compare_response_with_answer($response, $answer));
     }
 
@@ -216,8 +203,7 @@ final class question_test extends advanced_testcase
      * Data provider for {@see test_compare_response_with_answer()}.
      * @return array An array of arrays, each containing a response, and answer, and their expected comparison value.
      */
-    public static function compare_response_with_answer_provider(): array
-    {
+    public static function compare_response_with_answer_provider(): array {
         // The answer doesn't really matter here, the response is never compared to it.
         // As long as the response contains a non-NULL answer, even if it's blank,
         // the expected outcome of the response/answer comparison is TRUE.
@@ -235,8 +221,7 @@ final class question_test extends advanced_testcase
      * Checks file access for question attempts for this question.
      * Todo: Implement this test [ST 2025/04/10].
      */
-    public function test_check_file_access(): void
-    {
+    public function test_check_file_access(): void {
         $this->markTestIncomplete('To be implemented.');
     }
 }

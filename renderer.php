@@ -139,8 +139,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      *
      * @return string specific class name to add to the input element.
      */
-    protected function class_name()
-    {
+    protected function class_name() {
         return 'qtype_knowledgecheck_editor';
     }
 
@@ -154,8 +153,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      * @param object $context the context teh output belongs to.
      * @return string html to display the response.
      */
-    public function response_area_read_only($name, $qa, $step, $lines, $context)
-    {
+    public function response_area_read_only($name, $qa, $step, $lines, $context) {
         return html_writer::tag(
             'div',
             $this->prepare_response($name, $qa, $step, $context),
@@ -173,8 +171,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      * @param object $context the context teh output belongs to.
      * @return string html to display the response for editing.
      */
-    public function response_area_input($name, $qa, $step, $lines, $context)
-    {
+    public function response_area_input($name, $qa, $step, $lines, $context) {
         global $CFG;
         require_once($CFG->dirroot . '/repository/lib.php');
 
@@ -189,7 +186,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
             $formats[$fid] = $strformats[$fid];
         }
 
-        list($draftitemid, $response) = $this->prepare_response_for_editing(
+        [$draftitemid, $response] = $this->prepare_response_for_editing(
             $name,
             $step,
             $context
@@ -279,8 +276,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      * @param object $context the context the attempt belongs to.
      * @return array options for the editor.
      */
-    protected function get_editor_options($context)
-    {
+    protected function get_editor_options($context) {
         return ['context' => $context];
     }
 

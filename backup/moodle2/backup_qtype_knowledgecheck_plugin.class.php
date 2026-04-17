@@ -35,8 +35,7 @@ class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin
     /**
      * Returns the qtype information to attach to question element
      */
-    protected function define_question_plugin_structure()
-    {
+    protected function define_question_plugin_structure() {
 
         // Define the virtual plugin element with the condition to fulfill.
         $plugin = $this->get_plugin_element(null, '../../qtype', 'knowledgecheck');

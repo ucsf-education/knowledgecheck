@@ -35,8 +35,7 @@ class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin
     /**
      * Returns the paths to be handled by the plugin at question level
      */
-    protected function define_question_plugin_structure()
-    {
+    protected function define_question_plugin_structure() {
 
         $paths = [];
 
@@ -56,8 +55,7 @@ class restore_qtype_knowledgecheck_plugin extends restore_qtype_plugin
      * Process the qtype/knowledgecheck element
      * @param array $data The data to restore.
      */
-    public function process_knowledgecheck($data)
-    {
+    public function process_knowledgecheck($data) {
         global $DB;
 
         $data = (object)$data;

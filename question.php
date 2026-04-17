@@ -49,8 +49,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
     /**
      * {@inheritdoc}
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct(new question_first_matching_answer_grading_strategy($this));
     }
 
@@ -59,8 +58,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      *
      * @return array A structure defining what data is expected in the response to this question.
      */
-    public function get_expected_data()
-    {
+    public function get_expected_data() {
         return ['answer' => PARAM_RAW_TRIMMED];
     }
 
@@ -70,8 +68,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      * @param array $response A given response.
      * @return string|null A plain text summary of that response, that could be used in reports.
      */
-    public function summarise_response(array $response)
-    {
+    public function summarise_response(array $response) {
         if (isset($response['answer'])) {
             return $response['answer'];
         } else {
@@ -85,8 +82,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      * @param array $response A list of responses.
      * @return bool whether this response is a complete answer to this question.
      */
-    public function is_complete_response(array $response)
-    {
+    public function is_complete_response(array $response) {
         return array_key_exists('answer', $response) &&
         ($response['answer'] || $response['answer'] === '0');
     }
@@ -97,8 +93,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      * @param array $response The given response
      * @return string the validation error message.
      */
-    public function get_validation_error(array $response)
-    {
+    public function get_validation_error(array $response) {
         return get_string('pleaseenterananswer', 'qtype_knowledgecheck');
     }
 
@@ -110,8 +105,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      * @return bool whether the two sets of responses are the same - that is
      *      whether the new set of responses can safely be discarded.
      */
-    public function is_same_response(array $prevresponse, array $newresponse)
-    {
+    public function is_same_response(array $prevresponse, array $newresponse) {
         return question_utils::arrays_same_at_key_missing_is_blank(
             $prevresponse,
             $newresponse,
@@ -124,8 +118,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      *
      * @return array A list of possible answers to this question.
      */
-    public function get_answers()
-    {
+    public function get_answers() {
         return $this->answers;
     }
 
@@ -136,8 +129,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
      * @param question_answer $answer an answer.
      * @return bool whether the response matches the answer.
      */
-    public function compare_response_with_answer(array $response, question_answer $answer)
-    {
+    public function compare_response_with_answer(array $response, question_answer $answer) {
         if (!array_key_exists('answer', $response) || is_null($response['answer'])) {
             return false;
         }
@@ -170,7 +162,7 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy implemen
             $answer = $this->get_matching_answer(['answer' => $currentanswer]);
             $answerid = reset($args); // Itemid is answer id.
             return $options->feedback && $answer && $answerid == $answer->id;
-        } elseif ($component == 'question' && $filearea == 'hint') {
+        } else if ($component == 'question' && $filearea == 'hint') {
             return $this->check_hint_file_access($qa, $options, $args);
         } else {
             return parent::check_file_access(

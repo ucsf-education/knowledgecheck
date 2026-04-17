@@ -48,8 +48,7 @@ final class provider_test extends provider_testcase
     /**
      * Check meta-data declared by this privacy provider.
      */
-    public function test_get_metadata(): void
-    {
+    public function test_get_metadata(): void {
         $collection = new collection('qtype_knowledgecheck');
         $actual = provider::get_metadata($collection);
         $this->assertEquals($collection, $actual);
@@ -63,8 +62,7 @@ final class provider_test extends provider_testcase
     /**
      * Test the export_user_preferences without input.
      */
-    public function test_export_user_preferences_no_pref(): void
-    {
+    public function test_export_user_preferences_no_pref(): void {
         $this->resetAfterTest();
 
         $user = $this->getDataGenerator()->create_user();
@@ -81,8 +79,7 @@ final class provider_test extends provider_testcase
      * @param string $value The value stored in the database.
      * @param string $expected The expected transformed value.
      */
-    public function test_export_user_preferences($name, $value, $expected): void
-    {
+    public function test_export_user_preferences($name, $value, $expected): void {
         $this->resetAfterTest();
         $user = $this->getDataGenerator()->create_user();
         set_user_preference("qtype_knowledgecheck_$name", $value, $user);
@@ -106,8 +103,7 @@ final class provider_test extends provider_testcase
      *
      * @return array Array of valid user preferences.
      */
-    public static function user_preference_provider(): array
-    {
+    public static function user_preference_provider(): array {
         return [
             ['defaultmark', 2, 2],
         ];
