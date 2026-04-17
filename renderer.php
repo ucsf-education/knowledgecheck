@@ -103,8 +103,7 @@ class qtype_knowledgecheck_renderer extends qtype_renderer
      * @param question_attempt $qa the question attempt to display.
      * @return string HTML fragment.
      */
-    public function specific_feedback(question_attempt $qa)
-    {
+    public function specific_feedback(question_attempt $qa) {
         $question = $qa->get_question();
 
         $answer = $question->get_matching_answer(['answer' => $qa->get_last_qt_var('answer')]);
@@ -287,8 +286,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      * @param int $draftitemid draft item id.
      * @return array filepicker options for the editor.
      */
-    protected function get_filepicker_options($context, $draftitemid)
-    {
+    protected function get_filepicker_options($context, $draftitemid) {
         return ['return_types'  => FILE_INTERNAL | FILE_EXTERNAL];
     }
 
@@ -299,8 +297,7 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
      * @param int $draftitemid draft file area itemid.
      * @return string HTML for the filepicker, if used.
      */
-    protected function filepicker_html($inputname, $draftitemid)
-    {
+    protected function filepicker_html($inputname, $draftitemid) {
         return '';
     }
 }
