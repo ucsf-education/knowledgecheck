@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot . '/question/type/knowledgecheck/renderer_format_editor.php');
+
 /**
  * Generates the output for knowledge check questions.
  *
