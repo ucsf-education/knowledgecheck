@@ -36,8 +36,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/question.php');
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck extends question_type {
-
+class qtype_knowledgecheck extends question_type
+{
     /**
      * {@inheritdoc}
      *
@@ -45,7 +45,8 @@ class qtype_knowledgecheck extends question_type {
      * @param int $oldcontextid the context it is moving from.
      * @param int $newcontextid the context it is moving to.
      */
-    public function move_files($questionid, $oldcontextid, $newcontextid) {
+    public function move_files($questionid, $oldcontextid, $newcontextid)
+    {
         parent::move_files($questionid, $oldcontextid, $newcontextid);
         $this->move_files_in_hints($questionid, $oldcontextid, $newcontextid);
     }
@@ -56,7 +57,8 @@ class qtype_knowledgecheck extends question_type {
      * @param int $questionid the question being deleted.
      * @param int $contextid the context the question is in.
      */
-    protected function delete_files($questionid, $contextid) {
+    protected function delete_files($questionid, $contextid)
+    {
         parent::delete_files($questionid, $contextid);
         $this->delete_files_in_hints($questionid, $contextid);
     }
@@ -68,7 +70,8 @@ class qtype_knowledgecheck extends question_type {
      *      it is not a standard question object.
      * @return object $result->error or $result->notice
      */
-    public function save_question_options($question) {
+    public function save_question_options($question)
+    {
         global $DB;
         $options = $DB->get_record('qtype_knowledgecheck_options', ['questionid' => $question->id]);
         if (!$options) {
@@ -96,10 +99,10 @@ class qtype_knowledgecheck extends question_type {
      * @param question_definition $question the question_definition we are creating.
      * @param object $questiondata the question data loaded from the database.
      */
-    protected function initialise_question_instance(question_definition $question, $questiondata) {
+    protected function initialise_question_instance(question_definition $question, $questiondata)
+    {
         parent::initialise_question_instance($question, $questiondata);
         $this->initialise_question_answers($question, $questiondata);
-
     }
 
     /**
@@ -109,7 +112,8 @@ class qtype_knowledgecheck extends question_type {
      * @return array keys are subquestionid, values are arrays of possible
      *      responses to that subquestion.
      */
-    public function get_possible_responses($questiondata) {
+    public function get_possible_responses($questiondata)
+    {
         $responses = [];
 
         foreach ($questiondata->options->answers as $aid => $answer) {
@@ -127,7 +131,8 @@ class qtype_knowledgecheck extends question_type {
      *
      * @return mixed array as above, or null to tell the base class to do nothing.
      */
-    public function extra_question_fields() {
+    public function extra_question_fields()
+    {
         return ['qtype_knowledgecheck_options', 'responsetemplate'];
     }
 
@@ -138,7 +143,8 @@ class qtype_knowledgecheck extends question_type {
      *      question type, for example the description question type is not
      *      really a question type.
      */
-    public function is_real_question_type() {
+    public function is_real_question_type()
+    {
         return false;
     }
 }

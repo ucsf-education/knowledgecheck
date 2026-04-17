@@ -31,8 +31,8 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_renderer extends qtype_renderer {
-
+class qtype_knowledgecheck_renderer extends qtype_renderer
+{
     /**
      * {@inheritdoc}
      *
@@ -40,8 +40,10 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
      * @param question_display_options $options controls what should and should not be displayed.
      * @return string HTML fragment.
      */
-    public function formulation_and_controls(question_attempt $qa,
-            question_display_options $options) {
+    public function formulation_and_controls(
+        question_attempt $qa,
+        question_display_options $options
+    ) {
 
         $question = $qa->get_question();
 
@@ -56,26 +58,40 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
         }
 
         if (empty($options->readonly)) {
-            $answer = $responseoutput->response_area_input('answer', $qa,
-                $step, $question->responsefieldlines, $options->context);
-
+            $answer = $responseoutput->response_area_input(
+                'answer',
+                $qa,
+                $step,
+                $question->responsefieldlines,
+                $options->context
+            );
         } else {
-            $answer = $responseoutput->response_area_read_only('answer', $qa,
-                $step, $question->responsefieldlines, $options->context);
+            $answer = $responseoutput->response_area_read_only(
+                'answer',
+                $qa,
+                $step,
+                $question->responsefieldlines,
+                $options->context
+            );
         }
 
         $result = '';
-        $result .= html_writer::tag('div', $question->format_questiontext($qa),
-            ['class' => 'qtext']);
+        $result .= html_writer::tag(
+            'div',
+            $question->format_questiontext($qa),
+            ['class' => 'qtext']
+        );
 
         $result .= html_writer::start_tag('div', ['class' => 'ablock']);
         $result .= html_writer::tag('div', $answer, ['class' => 'answer']);
         $result .= html_writer::end_tag('div');
 
         if ($qa->get_state() == question_state::$invalid) {
-            $result .= html_writer::nonempty_tag('div',
+            $result .= html_writer::nonempty_tag(
+                'div',
                 $question->get_validation_error(['answer' => $answer]),
-                ['class' => 'validationerror']);
+                ['class' => 'validationerror']
+            );
         }
 
         return $result;
@@ -87,7 +103,8 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
      * @param question_attempt $qa the question attempt to display.
      * @return string HTML fragment.
      */
-    public function specific_feedback(question_attempt $qa) {
+    public function specific_feedback(question_attempt $qa)
+    {
         $question = $qa->get_question();
 
         $answer = $question->get_matching_answer(['answer' => $qa->get_last_qt_var('answer')]);
@@ -95,8 +112,14 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
             return '';
         }
 
-        return $question->format_text($answer->feedback, $answer->feedbackformat,
-            $qa, 'question', 'answerfeedback', $answer->id);
+        return $question->format_text(
+            $answer->feedback,
+            $answer->feedbackformat,
+            $qa,
+            'question',
+            'answerfeedback',
+            $answer->id
+        );
     }
 }
 
@@ -109,14 +132,15 @@ class qtype_knowledgecheck_renderer extends qtype_renderer {
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
-
+class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base
+{
     /**
      * Gets a specific class name to add to the input element.
      *
      * @return string specific class name to add to the input element.
      */
-    protected function class_name() {
+    protected function class_name()
+    {
         return 'qtype_knowledgecheck_editor';
     }
 
@@ -130,9 +154,13 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param object $context the context teh output belongs to.
      * @return string html to display the response.
      */
-    public function response_area_read_only($name, $qa, $step, $lines, $context) {
-        return html_writer::tag('div', $this->prepare_response($name, $qa, $step, $context),
-            ['class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly']);
+    public function response_area_read_only($name, $qa, $step, $lines, $context)
+    {
+        return html_writer::tag(
+            'div',
+            $this->prepare_response($name, $qa, $step, $context),
+            ['class' => $this->class_name() . ' qtype_knowledgecheck_editor readonly']
+        );
     }
 
     /**
@@ -145,7 +173,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param object $context the context teh output belongs to.
      * @return string html to display the response for editing.
      */
-    public function response_area_input($name, $qa, $step, $lines, $context) {
+    public function response_area_input($name, $qa, $step, $lines, $context)
+    {
         global $CFG;
         require_once($CFG->dirroot . '/repository/lib.php');
 
@@ -161,24 +190,32 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
         }
 
         list($draftitemid, $response) = $this->prepare_response_for_editing(
-            $name, $step, $context);
+            $name,
+            $step,
+            $context
+        );
 
-        $editor->use_editor($id, $this->get_editor_options($context),
-            $this->get_filepicker_options($context, $draftitemid));
+        $editor->use_editor(
+            $id,
+            $this->get_editor_options($context),
+            $this->get_filepicker_options($context, $draftitemid)
+        );
 
         $output = '';
         $output .= html_writer::start_tag('div', ['class' =>
             $this->class_name() . ' qtype_knowledgecheck_response']);
 
-        $output .= html_writer::tag('div', html_writer::tag('textarea', s($response),
-            ['id' => $id, 'name' => $inputname, 'rows' => $lines, 'cols' => 60]));
+        $output .= html_writer::tag('div', html_writer::tag(
+            'textarea',
+            s($response),
+            ['id' => $id, 'name' => $inputname, 'rows' => $lines, 'cols' => 60]
+        ));
 
         $output .= html_writer::start_tag('div');
         if (count($formats) == 1) {
             reset($formats);
             $output .= html_writer::empty_tag('input', ['type' => 'hidden',
                 'name' => $inputname . 'format', 'value' => key($formats)]);
-
         } else {
             $output .= html_writer::label(get_string('format'), 'menu' . $inputname . 'format', false);
             $output .= ' ';
@@ -201,16 +238,23 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param object $context the context the attempt belongs to.
      * @return string the response prepared for display.
      */
-    protected function prepare_response($name, question_attempt $qa,
-        question_attempt_step $step, $context) {
+    protected function prepare_response(
+        $name,
+        question_attempt $qa,
+        question_attempt_step $step,
+        $context
+    ) {
         if (!$step->has_qt_var($name)) {
             return '';
         }
 
         $formatoptions = new stdClass();
         $formatoptions->para = false;
-        return format_text($step->get_qt_var($name), $step->get_qt_var($name . 'format'),
-            $formatoptions);
+        return format_text(
+            $step->get_qt_var($name),
+            $step->get_qt_var($name . 'format'),
+            $formatoptions
+        );
     }
 
     /**
@@ -221,8 +265,11 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param object $context the context the attempt belongs to.
      * @return string the response prepared for display.
      */
-    protected function prepare_response_for_editing($name,
-        question_attempt_step $step, $context) {
+    protected function prepare_response_for_editing(
+        $name,
+        question_attempt_step $step,
+        $context
+    ) {
         return [0, $step->get_qt_var($name)];
     }
 
@@ -232,7 +279,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param object $context the context the attempt belongs to.
      * @return array options for the editor.
      */
-    protected function get_editor_options($context) {
+    protected function get_editor_options($context)
+    {
         return ['context' => $context];
     }
 
@@ -243,7 +291,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param int $draftitemid draft item id.
      * @return array filepicker options for the editor.
      */
-    protected function get_filepicker_options($context, $draftitemid) {
+    protected function get_filepicker_options($context, $draftitemid)
+    {
         return ['return_types'  => FILE_INTERNAL | FILE_EXTERNAL];
     }
 
@@ -254,7 +303,8 @@ class qtype_knowledgecheck_format_editor_renderer extends plugin_renderer_base {
      * @param int $draftitemid draft file area itemid.
      * @return string HTML for the filepicker, if used.
      */
-    protected function filepicker_html($inputname, $draftitemid) {
+    protected function filepicker_html($inputname, $draftitemid)
+    {
         return '';
     }
 }

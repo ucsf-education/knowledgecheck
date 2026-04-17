@@ -36,16 +36,16 @@ use core_privacy\local\request\writer;
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements base_provider, user_preference_provider {
-
-
+class provider implements base_provider, user_preference_provider
+{
     /**
      * Returns meta-data about this system.
      *
      * @param   collection $collection The initialised collection to add items to.
      * @return  collection A listing of user data stored through this system.
      */
-    public static function get_metadata(collection $collection): collection {
+    public static function get_metadata(collection $collection): collection
+    {
         $collection->add_user_preference('qtype_knowledgecheck_defaultmark', 'privacy:preference:defaultmark');
         return $collection;
     }
@@ -55,7 +55,8 @@ class provider implements base_provider, user_preference_provider {
      *
      * @param int $userid The userid of the user whose data is to be exported.
      */
-    public static function export_user_preferences(int $userid) {
+    public static function export_user_preferences(int $userid)
+    {
         $preference = get_user_preferences('qtype_knowledgecheck_defaultmark', null, $userid);
         if (null !== $preference) {
             $desc = get_string('privacy:preference:defaultmark', 'qtype_knowledgecheck');

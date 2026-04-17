@@ -41,7 +41,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/edit_knowledgecheck_
  *
  * @covers \qtype_knowledgecheck
  */
-final class question_type_test extends advanced_testcase {
+final class question_type_test extends advanced_testcase
+{
     /**
      * @var qtype_knowledgecheck The question type object under test.
      */
@@ -50,7 +51,8 @@ final class question_type_test extends advanced_testcase {
     /**
      * {@inheritDoc}
      */
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         parent::setUp();
         $this->qtype = new qtype_knowledgecheck();
     }
@@ -58,7 +60,8 @@ final class question_type_test extends advanced_testcase {
     /**
      * {@inheritDoc}
      */
-    protected function tearDown(): void {
+    protected function tearDown(): void
+    {
         parent::tearDown();
         unset($this->qtype);
     }
@@ -66,21 +69,24 @@ final class question_type_test extends advanced_testcase {
     /**
      * Checks the question type's name.
      */
-    public function test_name(): void {
+    public function test_name(): void
+    {
         $this->assertEquals($this->qtype->name(), 'knowledgecheck');
     }
 
     /**
      * Checks that this question type can perform frequency analysis on student responses.
      */
-    public function test_can_analyse_responses(): void {
+    public function test_can_analyse_responses(): void
+    {
         $this->assertTrue($this->qtype->can_analyse_responses());
     }
 
     /**
      * Checks that all extra question fields are declared properly.
      */
-    public function test_extra_question_fields(): void {
+    public function test_extra_question_fields(): void
+    {
         $fields = $this->qtype->extra_question_fields();
         $this->assertCount(2, $fields);
         $this->assertEquals('qtype_knowledgecheck_options', $fields[0]);
@@ -91,7 +97,8 @@ final class question_type_test extends advanced_testcase {
     /**
      * Checks that all possible responses are retrieved correctly.
      */
-    public function test_get_possible_responses(): void {
+    public function test_get_possible_responses(): void
+    {
         $q = test_question_maker::get_question_data('knowledgecheck');
         $this->assertEquals([
             $q->id => [
@@ -106,7 +113,8 @@ final class question_type_test extends advanced_testcase {
      * Test knowledgecheck question saving.
      * @see \qtype_shortanswer\question_type_test::test_question_saving_frogtoad()
      */
-    public function test_question_saving(): void {
+    public function test_question_saving(): void
+    {
         $this->resetAfterTest();
         $this->setAdminUser();
 
@@ -158,7 +166,8 @@ final class question_type_test extends advanced_testcase {
      * Retrieves the "default" knowledgecheck test question data.
      * @return stdClass The question data object.
      */
-    protected function get_test_question_data(): stdClass {
+    protected function get_test_question_data(): stdClass
+    {
         return test_question_maker::get_question_data('knowledgecheck');
     }
 }

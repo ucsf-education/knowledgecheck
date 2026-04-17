@@ -32,13 +32,14 @@ use core_question\local\bank\question_version_status;
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_test_helper extends question_test_helper {
-
+class qtype_knowledgecheck_test_helper extends question_test_helper
+{
     /**
      * {@inheritDoc}
      * @return array A list of example question names.
      */
-    public function get_test_questions(): array {
+    public function get_test_questions(): array
+    {
         return ['default'];
     }
 
@@ -47,7 +48,8 @@ class qtype_knowledgecheck_test_helper extends question_test_helper {
      *
      * @return qtype_knowledgecheck_question
      */
-    public static function make_knowledgecheck_question_default(): qtype_knowledgecheck_question {
+    public static function make_knowledgecheck_question_default(): qtype_knowledgecheck_question
+    {
         question_bank::load_question_definition_classes('knowledgecheck');
         $q = new qtype_knowledgecheck_question();
         test_question_maker::initialise_a_question($q);
@@ -67,7 +69,8 @@ class qtype_knowledgecheck_test_helper extends question_test_helper {
      * for the question returned by {@see make_knowledgecheck_question_default()}.
      * @return object
      */
-    public static function get_knowledgecheck_question_data_default(): object {
+    public static function get_knowledgecheck_question_data_default(): object
+    {
         global $USER;
 
         $qdata = new stdClass();
@@ -101,7 +104,8 @@ class qtype_knowledgecheck_test_helper extends question_test_helper {
      *
      * @return object
      */
-    public static function get_knowledgecheck_question_form_data_default(): object {
+    public static function get_knowledgecheck_question_form_data_default(): object
+    {
         $fromform = new stdClass();
         $fromform->name = 'Knowledgecheck';
         $fromform->questiontext = [

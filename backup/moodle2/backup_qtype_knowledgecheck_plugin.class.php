@@ -30,12 +30,13 @@
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin {
-
+class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin
+{
     /**
      * Returns the qtype information to attach to question element
      */
-    protected function define_question_plugin_structure() {
+    protected function define_question_plugin_structure()
+    {
 
         // Define the virtual plugin element with the condition to fulfill.
         $plugin = $this->get_plugin_element(null, '../../qtype', 'knowledgecheck');
@@ -57,8 +58,10 @@ class backup_qtype_knowledgecheck_plugin extends backup_qtype_plugin {
         $pluginwrapper->add_child($knowledgecheck);
 
         // Set source to populate the data.
-        $knowledgecheck->set_source_table('qtype_knowledgecheck_options',
-            ['questionid' => backup::VAR_PARENTID]);
+        $knowledgecheck->set_source_table(
+            'qtype_knowledgecheck_options',
+            ['questionid' => backup::VAR_PARENTID]
+        );
 
         // Don't need to annotate ids nor files.
 
