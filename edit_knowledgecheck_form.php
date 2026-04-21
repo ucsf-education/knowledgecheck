@@ -29,19 +29,29 @@
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_edit_form extends question_edit_form {
-
+class qtype_knowledgecheck_edit_form extends question_edit_form
+{
     /**
      * {@inheritdoc}
      *
      * @param object $mform The form being built.
      */
     protected function definition_inner($mform) {
-        $mform->addElement('editor', 'responsetemplate', get_string('responsetemplate', 'qtype_knowledgecheck'),
-            ['rows' => 10],  array_merge($this->editoroptions, ['maxfiles' => 0]));
+        $mform->addElement(
+            'editor',
+            'responsetemplate',
+            get_string('responsetemplate', 'qtype_knowledgecheck'),
+            ['rows' => 10],
+            array_merge($this->editoroptions, ['maxfiles' => 0])
+        );
         $mform->addHelpButton('responsetemplate', 'responsetemplate', 'qtype_knowledgecheck');
-        $this->add_per_answer_fields($mform, get_string('answerno', 'qtype_knowledgecheck', '{no}'),
-            ['1.0' => '100%'], 1, 0);
+        $this->add_per_answer_fields(
+            $mform,
+            get_string('answerno', 'qtype_knowledgecheck', '{no}'),
+            ['1.0' => '100%'],
+            1,
+            0
+        );
     }
 
     /**

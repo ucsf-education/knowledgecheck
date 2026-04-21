@@ -32,4 +32,3 @@ $string['privacy:metadata'] = 'Knowledgecheck question type plugin allows questi
 $string['privacy:preference:defaultmark'] = 'The default mark set for a given question.';
 $string['responsetemplate'] = 'Response template';
 $string['responsetemplate_help'] = 'Any text entered here will be displayed in the response input box when a new attempt at the question starts.';
-

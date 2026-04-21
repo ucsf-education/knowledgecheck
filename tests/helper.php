@@ -32,8 +32,8 @@ use core_question\local\bank\question_version_status;
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_test_helper extends question_test_helper {
-
+class qtype_knowledgecheck_test_helper extends question_test_helper
+{
     /**
      * {@inheritDoc}
      * @return array A list of example question names.

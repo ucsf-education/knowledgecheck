@@ -41,7 +41,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/edit_knowledgecheck_
  *
  * @covers \qtype_knowledgecheck
  */
-final class question_type_test extends advanced_testcase {
+final class question_type_test extends advanced_testcase
+{
     /**
      * @var qtype_knowledgecheck The question type object under test.
      */

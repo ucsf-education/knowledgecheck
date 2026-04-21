@@ -35,8 +35,8 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
  *
  * @covers \qtype_knowledgecheck_question
  */
-final class question_test extends advanced_testcase {
-
+final class question_test extends advanced_testcase
+{
     /**
      * @var qtype_knowledgecheck_question The question object under test.
      */

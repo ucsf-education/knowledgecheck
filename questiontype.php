@@ -36,8 +36,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/question.php');
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck extends question_type {
-
+class qtype_knowledgecheck extends question_type
+{
     /**
      * {@inheritdoc}
      *
@@ -99,7 +99,6 @@ class qtype_knowledgecheck extends question_type {
     protected function initialise_question_instance(question_definition $question, $questiondata) {
         parent::initialise_question_instance($question, $questiondata);
         $this->initialise_question_answers($question, $questiondata);
-
     }
 
     /**

@@ -29,8 +29,8 @@
  * @copyright  (c) The Regents of the University of California
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_knowledgecheck_question extends question_graded_by_strategy
-        implements question_response_answer_comparer {
+class qtype_knowledgecheck_question extends question_graded_by_strategy implements question_response_answer_comparer
+{
     /**
      * @var string
      */
@@ -107,7 +107,10 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy
      */
     public function is_same_response(array $prevresponse, array $newresponse) {
         return question_utils::arrays_same_at_key_missing_is_blank(
-                $prevresponse, $newresponse, 'answer');
+            $prevresponse,
+            $newresponse,
+            'answer'
+        );
     }
 
     /**
@@ -146,20 +149,30 @@ class qtype_knowledgecheck_question extends question_graded_by_strategy
      * @param bool $forcedownload whether the user must be forced to download the file.
      * @return bool true if the user can access this file.
      */
-    public function check_file_access($qa, $options, $component, $filearea,
-        $args, $forcedownload) {
+    public function check_file_access(
+        $qa,
+        $options,
+        $component,
+        $filearea,
+        $args,
+        $forcedownload
+    ) {
         if ($component == 'question' && $filearea == 'answerfeedback') {
             $currentanswer = $qa->get_last_qt_var('answer');
             $answer = $this->get_matching_answer(['answer' => $currentanswer]);
             $answerid = reset($args); // Itemid is answer id.
             return $options->feedback && $answer && $answerid == $answer->id;
-
         } else if ($component == 'question' && $filearea == 'hint') {
             return $this->check_hint_file_access($qa, $options, $args);
-
         } else {
-            return parent::check_file_access($qa, $options, $component, $filearea,
-                $args, $forcedownload);
+            return parent::check_file_access(
+                $qa,
+                $options,
+                $component,
+                $filearea,
+                $args,
+                $forcedownload
+            );
         }
     }
 }

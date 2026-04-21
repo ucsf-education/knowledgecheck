@@ -43,8 +43,8 @@ require_once($CFG->dirroot . '/question/type/knowledgecheck/classes/privacy/prov
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \qtype_knowledgecheck\privacy\provider
  */
-final class provider_test extends provider_testcase {
-
+final class provider_test extends provider_testcase
+{
     /**
      * Check meta-data declared by this privacy provider.
      */
